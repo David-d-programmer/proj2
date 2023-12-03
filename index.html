@@ -4,15 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Title-->
     <title>RPSLS Game</title>
+    <!--Stylesheet-->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
+    <!--Header-->
     <header>
       <h2>Rock, Paper, Scissors, Lizard, Spock</h2>
     </header>
-    
-    <section class="game-area">
+
+    <!--Main gaming activities-->
+    <section class="game-court">
       <div>
         <button aria-label="Rock" data-choice="0" class="control">Rock</button>
         <button aria-label="Paper" data-choice="1" class="control">
@@ -32,7 +36,7 @@
       <div id="messages"></div>
 
       <div class="player">
-        <h3 class="scores">Your score: <span id="player-score">0</span></h3>
+        <h3 class="scores">Player score: <span id="player-score">0</span></h3>
         <img id="player-image" src="assets/images/Nx0iTi.png" alt="Rock, Paper, Scissors, Lizard, Spock">
       </div>
       <div class="computer">
@@ -41,9 +45,12 @@
       </div>
     </section>
 
+    <!--Footer-->
     <footer>
         <h3> Game Rules </h3>
         <p></p>
     </footer>
+    
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
