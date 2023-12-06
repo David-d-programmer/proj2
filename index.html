@@ -17,18 +17,18 @@
 
     <!--Main gaming activities-->
     <section class="game-court">
-      <div id = "buttons">
-        <button aria-label="Rock" data-choice="0" class="control">Rock</button>
-        <button aria-label="Paper" data-choice="1" class="control">
+      <div>
+        <button aria-label="Rock" data-option="0" class="control">Rock</button>
+        <button aria-label="Paper" data-option="1" class="control">
           Paper
         </button>
-        <button aria-label="Scissors" data-choice="2" class="control">
+        <button aria-label="Scissors" data-option="2" class="control">
           Scissors
         </button>
-        <button aria-label="Lizard" data-choice="3" class="control">
+        <button aria-label="Lizard" data-option="3" class="control">
           Lizard
         </button>
-        <button aria-label="Spock" data-choice="4" class="control">
+        <button aria-label="Spock" data-option="4" class="control">
           Spock
         </button>
       </div>
@@ -37,20 +37,35 @@
 
       <div class="player">
         <h3 class="scores">Player score: <span id="player-score">0</span></h3>
-        <img id="player-image" src="assets/images/Nx0iTi.png" alt="Rock, Paper, Scissors, Lizard, Spock">
+        <img
+          id="player-image"
+          src="assets/images/Nx0iTi.png"
+          alt="Rock, Paper, Scissors, Lizard, Spock"
+        />
       </div>
       <div class="computer">
-        <h3 class="scores">Computer score: <span id="computer-score">0</span></h3>
-        <img id="player-image" src="assets/images/Nx0iTi.png" alt="Rock, Paper, Scissors, Lizard, Spock">
+        <h3 class="scores">
+          Computer score: <span id="computer-score">0</span>
+        </h3>
+        <img
+          id="computer-image"
+          src="assets/images/Nx0iTi.png"
+          alt="Rock, Paper, Scissors, Lizard, Spock"
+        />
       </div>
     </section>
 
     <!--Footer-->
     <footer>
-        <h3> Game Rules </h3>
-        <p></p>
+      <h3>Game Rules</h3>
+      <p>
+        "Scissors decapitate Scissors cuts paper, paper covers rock, rock
+        crushes lizard, lizard poisons Spock, Spock smashes scissors, scissors
+        decapitates lizard, lizard eats paper, paper disproves Spock, Spock
+        vaporizes rock, and as it always has, rock crushes scissors."
+      </p>
     </footer>
-    
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>
