@@ -1,13 +1,140 @@
 /**
+ * Declare constants for DOM elements other options
+ */
+
+const buttons = document.getElementsByClassName("control");
+const playerScore = document.getElementById("player-score");
+const computerScore = document.getElementById("computer-score");
+const playerImage = document.getElementById("player-image");
+const computerImage = document.getElementById("computer-image");
+const messages = document.getElementById("messages");
+const options = ["rock", "paper", "scissors", "lizard", "spock"];
+
+const COMPUTER_WIN = "cwin";
+const PLAYER_WIN = "pwin";
+const DRAW = "draw";
+
+const MAX_SCORE = 5;
+
+/**
  *  Adding event listening to loop through all buttons
  */
-document.addEventListener("DOMContentLoaded", function () {
-    let buttons = this.getElementsByTagName("button");
 
-    for (let button of buttons) {
-        button.addEventListener("click",  function () {
-            let playerOption = this.getAttribute("data-option");
-            playGame(playerOption);
-        });
+for (let button of buttons) {
+    button.addEventListener("click", function () {
+        let playerOption = this.getAttribute("data-option");
+        playGame(playerOption);
+
+    });
+}
+
+
+/**
+ * The main game function. it accepts the data-option of selected button
+ */
+function playGame(playerOption) {
+    playerOption = options[playerOption];
+    var computerOption = Math.floor(Math.random() * 5);
+    computerOption = options[computerOption];
+
+    alert("The computer chose " + computerOption);
+
+    var result = compare(computerOption, playerOption);
+
+    updateScores(result);
+}
+
+var compare = function (computerOption, playerOption) {
+
+    if (computerOption === playerOption) {
+        return DRAW;
     }
-})
+    else if (computerOption === "rock") {
+        if (playerOption === "scissors") {
+            return COMPUTER_WIN;
+        } else if (playerOption === "paper") {
+            return PLAYER_WIN;
+        } else if (playerOption === "lizard") {
+            return COMPUTER_WIN;
+        } else if (playerOption === "spock") {
+            return PLAYER_WIN;
+        }
+    }
+
+    else if (computerOption === "paper") {
+        if (playerOption === "scissors") {
+            return PLAYER_WIN;
+        } else if (playerOption === "rock") {
+            return COMPUTER_WIN;
+        } else if (playerOption === "lizard") {
+            return PLAYER_WIN;
+        } else {
+            return COMPUTER_WIN;
+        }
+    }
+
+    else if (computerOption === "scissors") {
+        if (playerOption === "paper") {
+            return COMPUTER_WIN;
+        } else if (playerOption === "rock") {
+            return PLAYER_WIN;
+        } else if (playerOption === "lizard") {
+            return COMPUTER_WIN;
+        } else {
+            return PLAYER_WIN;
+        }
+    }
+
+    else if (computerOption === "lizard") {
+        if (playerOption === "scissors") {
+            return COMPUTER_WIN;
+        } else if (playerOption === "rock") {
+            return PLAYER_WIN;
+        } else if (playerOption === "paper") {
+            return COMPUTER_WIN;
+        } else {
+            return COMPUTER_WIN;
+        }
+    }
+
+    else if (computerOption === "spock") {
+        if (playerOption === "scissors") {
+            return COMPUTER_WIN;
+        } else if (playerOption === "rock") {
+            return COMPUTER_WIN;
+        } else if (playerOption === "lizard") {
+            return PLAYER_WIN;
+        } else {
+            return PLAYER_WIN;
+        }
+    }
+};
+
+function updateScores(result) {
+    if (result == DRAW) {
+        return;
+    }
+
+    let oldScore = 0;
+
+    if (result == PLAYER_WIN) {
+        //incrementing player scores
+        oldScore = parseInt(document.getElementById("player-score").innerText);
+        document.getElementById("player-score").innerText = ++oldScore;
+    } else {
+        //incrementing computer scores
+        oldScore = parseInt(document.getElementById("computer-score").innerText);
+        document.getElementById("computer-score").innerText = ++oldScore;
+    }
+
+    if (oldScore == MAX_SCORE) {
+        if (result == PLAYER_WIN) {
+            prompt("Player Won");
+        } else {
+            prompt("Computer won");
+        }
+
+    }
+}
+
+
