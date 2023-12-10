@@ -19,9 +19,6 @@ header {
 
 }
 
-/* .rock {
-    background-image: "rock.webp";
-} */
 
 /* footer */
 footer {
@@ -45,6 +42,10 @@ footer {
     text-align: center;
     margin-top: 1%;
 
+}
+
+#messages {
+    font-style: bold italic;
 }
 
 .control {

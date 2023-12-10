@@ -9,6 +9,7 @@ const playerImage = document.getElementById("player-image");
 const computerImage = document.getElementById("computer-image");
 const messages = document.getElementById("messages");
 const options = ["rock", "paper", "scissors", "lizard", "spock"];
+const images = ["ROCK.png", "PAPER.png", "SCISSORS.png", "LIZARD.png", "SPOCK.png"];
 
 const COMPUTER_WIN = "cwin";
 const PLAYER_WIN = "pwin";
@@ -37,7 +38,13 @@ function playGame(playerOption) {
     var computerOption = Math.floor(Math.random() * 5);
     computerOption = options[computerOption];
 
-    alert("The computer chose " + computerOption);
+    playerImage.src = `assets/images`;
+    playerImage.alt = playerOption;
+
+    //alert("The computer chose " + computerOption);
+
+    computerImage.src = `assets/images/${Math.floor(Math.random() * 5)}`;
+    computerImage.alt = computerOption;
 
     var result = compare(computerOption, playerOption);
 
@@ -126,12 +133,12 @@ function updateScores(result) {
         oldScore = parseInt(document.getElementById("computer-score").innerText);
         document.getElementById("computer-score").innerText = ++oldScore;
     }
-
+    // this display the message in the message div
     if (oldScore == MAX_SCORE) {
         if (result == PLAYER_WIN) {
-            prompt("Player Won");
+            document.getElementById("messages").innerText = "PLAYER WINS";
         } else {
-            prompt("Computer won");
+            document.getElementById("messages").innerText = "COMPUTER WINS";
         }
 
     }
