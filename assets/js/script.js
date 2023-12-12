@@ -9,25 +9,22 @@ const playerImage = document.getElementById("player-image");
 const computerImage = document.getElementById("computer-image");
 const messages = document.getElementById("messages");
 const options = ["rock", "paper", "scissors", "lizard", "spock"];
-const images = ["ROCK.png", "PAPER.png", "SCISSORS.png", "LIZARD.png", "SPOCK.png"];
 
 const COMPUTER_WIN = "cwin";
 const PLAYER_WIN = "pwin";
 const DRAW = "draw";
 
+const OPTION_IMAGES = {
+    rock: "assets/images/ROCK.png",
+    paper: "assets/images/PAPER.png",
+    scissors: "assets/images/SCISSORS.png",
+    lizard: "assets/images/LIZARD.png",
+    spock: "assets/images/SPOCK.png",
+};
+
 const MAX_SCORE = 5;
 
-/**
- *  Adding event listening to loop through all buttons
- */
 
-for (let button of buttons) {
-    button.addEventListener("click", function () {
-        let playerOption = this.getAttribute("data-option");
-        playGame(playerOption);
-
-    });
-}
 
 
 /**
@@ -35,22 +32,29 @@ for (let button of buttons) {
  */
 function playGame(playerOption) {
     playerOption = options[playerOption];
+    renderUserSelection(playerOption, true);
+
     var computerOption = Math.floor(Math.random() * 5);
     computerOption = options[computerOption];
+    renderUserSelection(computerOption, false);
 
-    playerImage.src = `assets/images`;
-    playerImage.alt = playerOption;
 
-    //alert("The computer chose " + computerOption);
-
-    computerImage.src = `assets/images/${Math.floor(Math.random() * 5)}`;
-    computerImage.alt = computerOption;
 
     var result = compare(computerOption, playerOption);
 
     updateScores(result);
+    checkWinnerAndReset();
 }
 
+function renderUserSelection(selection, player) {
+    let userImageElement = player ? playerImage : computerImage;
+    let selectionImage = OPTION_IMAGES[selection];
+    userImageElement.src = selectionImage;
+    userImageElement.alt = selection;
+}
+/**
+ * comparing the computer option and the player option
+ */
 var compare = function (computerOption, playerOption) {
 
     if (computerOption === playerOption) {
@@ -116,7 +120,9 @@ var compare = function (computerOption, playerOption) {
         }
     }
 };
-
+/**
+ * This is where the score is updated
+ */
 function updateScores(result) {
     if (result == DRAW) {
         return;
@@ -125,23 +131,58 @@ function updateScores(result) {
     let oldScore = 0;
 
     if (result == PLAYER_WIN) {
-        //incrementing player scores
+        /**
+         * incrementing player scores
+         */
         oldScore = parseInt(document.getElementById("player-score").innerText);
         document.getElementById("player-score").innerText = ++oldScore;
     } else {
-        //incrementing computer scores
+        /**
+         * incrementing computer scores
+         */
         oldScore = parseInt(document.getElementById("computer-score").innerText);
         document.getElementById("computer-score").innerText = ++oldScore;
     }
     // this display the message in the message div
-    if (oldScore == MAX_SCORE) {
-        if (result == PLAYER_WIN) {
-            document.getElementById("messages").innerText = "PLAYER WINS";
-        } else {
-            document.getElementById("messages").innerText = "COMPUTER WINS";
-        }
 
+}
+
+function checkWinnerAndReset() {
+    let playerScore = parseInt(document.getElementById("player-score").innerText);
+    let computerScore = parseInt(document.getElementById("computer-score").innerText);
+
+    let gameComplete = false;
+    if (playerScore == MAX_SCORE) {
+        document.getElementById("messages").innerText = "PLAYER WINS";
+        gameComplete = true;
+    } else if (computerScore == MAX_SCORE) {
+        document.getElementById("messages").innerText = "COMPUTER WINS";
+        gameComplete = true;
+    }
+
+    if (gameComplete) {
+        setTimeout(resetGame, 2000);
     }
 }
 
+function resetGame() {
+    document.getElementById("messages").innerText = "";
+    document.getElementById("player-score").innerText = "0";
+    document.getElementById("computer-score").innerText = "0";
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    /**
+     * Adding event listening to loop through all buttons
+     */
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            let playerOption = this.getAttribute("data-option");
+            playGame(playerOption);
+
+        });
+    }
+});
 
