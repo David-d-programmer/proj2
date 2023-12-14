@@ -44,9 +44,7 @@ footer {
 
 }
 
-#messages {
-    font-style: bold italic;
-}
+
 
 .control {
     display: inline-block;
@@ -82,4 +80,13 @@ footer {
 
 #computer-image {
     width: 75%;
+}
+
+#grules {
+    display: flex;
+    list-style-type: none;
+}
+
+#grules li {
+    margin: 10px;
 }
