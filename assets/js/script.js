@@ -170,7 +170,7 @@ function checkWinner() {
      * This reset the game after 6seconds that the winner has been declared
      */
     if (gameComplete) {
-        setTimeout(resetGame, 6000);
+        setTimeout(resetGame, 4000);
     }
 }
 
