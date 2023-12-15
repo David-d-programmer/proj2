@@ -3,7 +3,7 @@
 The rock, paper, scissors, lizard and spock game which i gave the acronym "RPSLS" demonstrate how jacascript works in the real-world. This game is designed for a user to interact with a computer through gaming; The site is targeted not only to people who love coding  or gaming but also to the general public because the game is a well known game played in the society; The "RPSLS" is fully responsive and enables user to interact with computer and whosoeve wins will be declared winner.
 
 
-![Responsice Mockup](assets/images/RPSLS.png)
+![Responsice Mockup](RPSLS.png)
 
 ## Features
 
