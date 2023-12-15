@@ -43,7 +43,8 @@ function playGame(playerOption) {
     var result = compare(computerOption, playerOption);
 
     updateScores(result);
-    checkWinnerAndReset();
+    checkWinner();
+    resetGame();
 }
 
 function renderUserSelection(selection, player) {
@@ -147,13 +148,13 @@ function updateScores(result) {
 
 }
 
-function checkWinnerAndReset() {
+function checkWinner() {
     let playerScore = parseInt(document.getElementById("player-score").innerText);
     let computerScore = parseInt(document.getElementById("computer-score").innerText);
 
     let gameComplete = false;
     if (playerScore == MAX_SCORE) {
-        document.getElementById("messages").innerText = "PLAYER WINS";
+        document.getElementById("messages").innerText = "YOU WIN";
         gameComplete = true;
     } else if (computerScore == MAX_SCORE) {
         document.getElementById("messages").innerText = "COMPUTER WINS";
@@ -161,7 +162,7 @@ function checkWinnerAndReset() {
     }
 
     if (gameComplete) {
-        setTimeout(resetGame, 2000);
+        setTimeout(resetGame, 6000);
     }
 }
 

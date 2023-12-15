@@ -81,3 +81,8 @@ footer {
 #computer-image {
     width: 75%;
 }
+
+p {
+    display: inline-block;
+
+}
