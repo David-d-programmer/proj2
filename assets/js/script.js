@@ -14,12 +14,15 @@ const COMPUTER_WIN = "cwin";
 const PLAYER_WIN = "pwin";
 const DRAW = "draw";
 
+/**
+ * Declaring images
+ */
 const OPTION_IMAGES = {
-    rock: "assets/images/ROCK.png",
-    paper: "assets/images/PAPER.png",
-    scissors: "assets/images/SCISSORS.png",
-    lizard: "assets/images/LIZARD.png",
-    spock: "assets/images/SPOCK.png",
+    rock: "assets/images/rock.png",
+    paper: "assets/images/paper.png",
+    scissors: "assets/images/scissors.png",
+    lizard: "assets/images/lizard.png",
+    spock: "assets/images/spock.png",
 };
 
 const MAX_SCORE = 5;
@@ -44,9 +47,10 @@ function playGame(playerOption) {
 
     updateScores(result);
     checkWinner();
-    resetGame();
 }
-
+/**
+ * This functions uses images to demonstrate the game
+ */
 function renderUserSelection(selection, player) {
     let userImageElement = player ? playerImage : computerImage;
     let selectionImage = OPTION_IMAGES[selection];
@@ -54,7 +58,7 @@ function renderUserSelection(selection, player) {
     userImageElement.alt = selection;
 }
 /**
- * comparing the computer option and the player option
+ * comparing the computer option and the player option, the idea was gotten from here: https://stackoverflow.com/questions/22623331/rock-paper-scissors-lizard-spock-in-javascript
  */
 var compare = function (computerOption, playerOption) {
 
@@ -144,10 +148,12 @@ function updateScores(result) {
         oldScore = parseInt(document.getElementById("computer-score").innerText);
         document.getElementById("computer-score").innerText = ++oldScore;
     }
-    // this display the message in the message div
+
 
 }
-
+/**
+ * This checks the winner and also declares the winner
+ */
 function checkWinner() {
     let playerScore = parseInt(document.getElementById("player-score").innerText);
     let computerScore = parseInt(document.getElementById("computer-score").innerText);
@@ -160,7 +166,9 @@ function checkWinner() {
         document.getElementById("messages").innerText = "COMPUTER WINS";
         gameComplete = true;
     }
-
+    /**
+     * This reset the game after 6seconds that the winner has been declared
+     */
     if (gameComplete) {
         setTimeout(resetGame, 6000);
     }
